@@ -2,11 +2,17 @@
   "name": "@f1/types",
   "version": "0.0.1",
   "private": true,
-  "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
     "lint": "echo 'lint ok types'",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
