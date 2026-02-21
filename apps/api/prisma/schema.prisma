@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Season {
+  id      String @id @default(cuid())
+  year    Int    @unique
+  status  String
+  races   Race[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Race {
+  id          String   @id @default(cuid())
+  seasonId    String
+  season      Season   @relation(fields: [seasonId], references: [id])
+  round       Int
+  name        String
+  country     String
+  countryCode String
+  circuitName String
+  startDate   DateTime
+  endDate     DateTime
+  timezone    String
+  slug        String   @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([seasonId, round])
+}
+
+model Team {
+  id           String   @id @default(cuid())
+  name         String   @unique
+  primaryColor String
+  logoUrl      String
+  drivers      Driver[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Driver {
+  id          String @id @default(cuid())
+  name        String
+  number      Int
+  countryCode String
+  headshotUrl String
+  shortBio    String
+  slug        String @unique
+  teamId      String
+  team        Team   @relation(fields: [teamId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

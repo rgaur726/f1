@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="F1 PWA icon">
+  <rect width="512" height="512" rx="96" fill="#0b0e11"/>
+  <path d="M84 328h344" stroke="#E10600" stroke-width="28" stroke-linecap="round"/>
+  <path d="M96 180h180c26 0 48 22 48 48s-22 48-48 48H96" fill="none" stroke="#ffffff" stroke-width="30" stroke-linecap="round"/>
+  <path d="M340 180h74" stroke="#ffffff" stroke-width="30" stroke-linecap="round"/>
+</svg>
